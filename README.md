@@ -3,7 +3,7 @@ Don't ask me anything,I just write it for my study    不要问我任何事，�
 This is a dual language income/expense manager    这是一款双语的收入/支出记账应用    
 That's all    暂时就这些
 
-Thanks to
+##Thanks to
 
 SQLite  数据库代码引用：http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL
 
