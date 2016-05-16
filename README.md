@@ -1,7 +1,7 @@
 # AnytimeRecord
 ~~Don't ask me anything,I just write it for my study    不要问我任何事，我只是为了我的学业写的这些东西~~
 
-The more info is continue...   更多的东西还在努力
+this is a bug version,but more info is continue...   目前还是个bug版本，更多东西还在继续
 
 This is a dual language income/expense manager    这是一款双语的收入/支出记账应用    
 
