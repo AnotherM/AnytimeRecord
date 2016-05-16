@@ -5,9 +5,9 @@ That's all    暂时就这些
 
 ##Thanks to
 
-[SQLite  数据库代码引用：](http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL)
+[SQLite  数据库代码引用](http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL)
 
-[Calculator  计算器代码引用：](http://wenku.baidu.com/view/9c2829c22cc58bd63186bd4d.html)
+[Calculator  计算器代码引用](http://wenku.baidu.com/view/9c2829c22cc58bd63186bd4d.html)
 
 [UI  界面配色及设计相关](https://play.google.com/store/apps/details?id=com.rwal.material)
 
