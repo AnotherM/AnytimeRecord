@@ -1,14 +1,20 @@
-package arteam.anytimerecord;
+package m.another.anytimerecord;
 
-/**
- * Created by MILK on 2016/2/10.
- */
 class DataBean {
+    private int id;
     private String money;
     private String category;
     private String date;
     private String time;
     private String note;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getMoney() {
         return money;

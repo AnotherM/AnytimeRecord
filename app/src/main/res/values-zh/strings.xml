@@ -56,7 +56,7 @@
     <string name="action_settings">设置</string>
     <string name="category">未添加分类</string>
     <string name="detail">详细信息</string>
-    <string name="show_info">详细信息：</string>
+
     <string name="show_date">日期：</string>
     <string name="show_note">备注：</string>
     <string name="show_time">时间：</string>
@@ -74,9 +74,6 @@
     <string name="finished">修改成功，将在程序重启后保存</string>
     <string name="tap_for_detail">点击查看使用说明</string>
     <string name="exit">退出</string>
-    <string name="i1">1：记录将会显示在屏幕下方，向上拖动灰色区域查看。</string>
-    <string name="i2">2：计算器按钮将会停留供你使用，目前已知问题，在Android 5.0以上系统，浮动按钮可能只显示一半而不停留</string>
-    <string name="i3">3：请注意尽量避免两条数据完全相同，否则在你删除其中之一时，另一条数据也会被删除。</string>
     <string name="ins">使用说明</string>
     <string name="ver_2.3">2.3：Release版本，UI改善，修复一些小Bug</string>
 

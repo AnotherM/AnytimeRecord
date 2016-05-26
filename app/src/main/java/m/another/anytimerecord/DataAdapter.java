@@ -1,4 +1,4 @@
-package arteam.anytimerecord;
+package m.another.anytimerecord;
 
 
 import android.content.Context;
@@ -15,9 +15,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by MILK on 2016/2/15.
- */
 class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final List<DataBean> dataBeanList;
@@ -75,8 +72,7 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     final String category = (String) v.getTag(R.id.item_category);
                     new AlertDialog.Builder(context)
                             .setTitle(R.string.detail)
-                            .setMessage(context.getString(R.string.show_info) + "\n"
-                                    + context.getString(R.string.show_money) + money + "\n"
+                            .setMessage(context.getString(R.string.show_money) + money + "\n"
                                     + context.getString(R.string.show_category) + category + "\n"
                                     + context.getString(R.string.show_date) + dataBeanList.get(getAdapterPosition()).getDate() + "\n"
                                     + context.getString(R.string.show_time) + dataBeanList.get(getAdapterPosition()).getTime() + "\n"
@@ -85,7 +81,7 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     DBOperator dbOperator = new DBOperator(context.getApplicationContext(), DBOpenHelper.TABLE_NAME);
-                                    dbOperator.delete(money, category, dataBeanList.get(getAdapterPosition()).getDate(), dataBeanList.get(getAdapterPosition()).getTime(), dataBeanList.get(getAdapterPosition()).getNote());
+                                    dbOperator.delete(dataBeanList.get(getAdapterPosition()).getId(), money, category, dataBeanList.get(getAdapterPosition()).getDate(), dataBeanList.get(getAdapterPosition()).getTime(), dataBeanList.get(getAdapterPosition()).getNote());
                                     Snackbar.make(v, R.string.deleted, Snackbar.LENGTH_LONG).show();
                                 }
                             })

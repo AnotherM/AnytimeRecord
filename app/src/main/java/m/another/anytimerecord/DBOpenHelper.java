@@ -1,4 +1,4 @@
-package arteam.anytimerecord;
+package m.another.anytimerecord;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +16,7 @@ class DBOpenHelper extends SQLiteOpenHelper {
     final static String DATA_DATE = "date";
     final static String DATA_TIME = "time";
     final static String DATA_NOTE = "note";
-    private final static String ID = "_id";
+    private final static String ID = "id";
 
     public DBOpenHelper(Context context) {
         super(context, "data.db", null, 1);
@@ -28,7 +28,7 @@ class DBOpenHelper extends SQLiteOpenHelper {
                 + "("
                 + ID + " integer primary key autoincrement, "
                 + DATA_MONEY + " money, "
-                + DATA_CATEGORY + " varchar(20), "
+                + DATA_CATEGORY + " text, "
                 + DATA_DATE + " varchar(20), "
                 + DATA_TIME + " varchar(20), "
                 + DATA_NOTE + " text "

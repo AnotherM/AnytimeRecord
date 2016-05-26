@@ -1,4 +1,4 @@
-package arteam.anytimerecord;
+package m.another.anytimerecord;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,7 +14,6 @@ import java.util.List;
  * Created by MILK on 2016/2/14.
  * Thanks to: http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL
  */
-@SuppressWarnings({"ALL", "UnusedReturnValue"})
 class DBOperator {
 
     private final SQLiteOpenHelper mDBOpenHelper;
@@ -52,10 +51,10 @@ class DBOperator {
         return i;
     }
 
-    public boolean delete(String money, String category, String date, String time, String note) {
+    public boolean delete(int id, String money, String category, String date, String time, String note) {
         database = mDBOpenHelper.getWritableDatabase();
         if (database.isOpen()) {
-            database.delete(tableName, "money=? AND category=? AND date=? AND time=? AND note=?", new String[]{money, category, date, time, note});
+            database.delete(tableName, "id=? AND money=? AND category=? AND date=? AND time=? AND note=?", new String[]{String.valueOf(id), money, category, date, time, note});
             database.close();
             return true;
         }

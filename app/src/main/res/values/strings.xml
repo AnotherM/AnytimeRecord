@@ -1,12 +1,12 @@
-<resources>
+﻿<resources>
     <string name="app_name">Anytime Record</string>
-    <string name="category">Category not added</string>
+    <string name="category">Category not add</string>
     <string name="money">Input the money</string>
     <string name="date">Select date</string>
-    <string name="not_date">Date not added</string>
+    <string name="not_date">Date not add</string>
     <string name="time">Select time</string>
-    <string name="not_time">Time not added</string>
-    <string name="note">Notes not added</string>
+    <string name="not_time">Time not add</string>
+    <string name="note">Notes not add</string>
     <string name="done">Done</string>
 
     <string name="title_activity_setting">Setting</string>
@@ -76,21 +76,17 @@
     <string name="title_activity_edit">Edit Item</string>
 
     <!--dialog info-->
-    <string name="show_info">This is the info</string>
+
     <string name="show_date">Date:</string>
     <string name="show_time">Time:</string>
     <string name="show_note">Note:</string>
     <string name="show_money">Money:</string>
     <string name="show_category">Category:</string>
-    <string name="not_set">Not added</string>
+    <string name="not_set">Not add</string>
     <string name="deleted">The item will be delete after app restart\nMake sure others will not be deleted</string>
     <string name="finished">Modify success,change will save after app restart</string>
     <string name="tap_for_detail">Click for instructions</string>
     <string name="exit">Exit</string>
-
-    <string name="i1">1:Record will show at the bottom of screen,Drag the gray area up to view.</string>
-    <string name="i2">2:The calculator button will stay to help you.Known issue:The float button only show half above Android 5.0</string>
-    <string name="i3">3:Please pay attention to avoid two identical data,else when you delete one of them,other data will be delete.</string>
 
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->
 </resources>

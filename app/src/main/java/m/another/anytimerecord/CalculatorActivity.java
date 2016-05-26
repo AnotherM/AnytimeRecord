@@ -1,11 +1,10 @@
-package arteam.anytimerecord;
+package m.another.anytimerecord;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-//Thanks to:http://wenku.baidu.com/view/9c2829c22cc58bd63186bd4d.html
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     private double num1;
     private TextView tv_result;
