@@ -89,6 +89,7 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent setIntent = new Intent(context.getApplicationContext(), EditActivity.class);
+                                    setIntent.putExtra(DBOpenHelper.ID, dataBeanList.get(getAdapterPosition()).getId());
                                     setIntent.putExtra(DBOpenHelper.DATA_MONEY, dataBeanList.get(getAdapterPosition()).getMoney());
                                     setIntent.putExtra(DBOpenHelper.DATA_CATEGORY, dataBeanList.get(getAdapterPosition()).getCategory());
                                     setIntent.putExtra(DBOpenHelper.DATA_DATE, dataBeanList.get(getAdapterPosition()).getDate());

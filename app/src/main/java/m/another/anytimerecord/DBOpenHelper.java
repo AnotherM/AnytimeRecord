@@ -16,7 +16,7 @@ class DBOpenHelper extends SQLiteOpenHelper {
     final static String DATA_DATE = "date";
     final static String DATA_TIME = "time";
     final static String DATA_NOTE = "note";
-    private final static String ID = "id";
+    final static String ID = "id";
 
     public DBOpenHelper(Context context) {
         super(context, "data.db", null, 1);

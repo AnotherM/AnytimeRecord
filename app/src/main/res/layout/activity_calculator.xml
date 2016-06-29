@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/layout_margin_16dp"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="arteam.anytimerecord.CalculatorActivity">
+    tools:context="m.another.anytimerecord.CalculatorActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,21 +15,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <TextView
+    <EditText
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:focusable="false"
         android:gravity="bottom|end"
+        android:inputType="text"
         android:singleLine="true"
         android:text="@string/zero"
         android:textSize="48sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,9 +45,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvClean"
                 android:text="@string/clear"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -59,9 +57,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvDelete"
                 android:text="@string/del"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -70,9 +69,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvEqual"
                 android:text="@string/equal"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -91,9 +91,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvSeven"
                 android:text="@string/seven"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -102,9 +103,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvEight"
                 android:text="@string/eight"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -113,9 +115,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvNine"
                 android:text="@string/nine"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -124,9 +127,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvDivide"
                 android:text="@string/divide"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -144,9 +148,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvFour"
                 android:text="@string/four"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -155,9 +160,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvFive"
                 android:text="@string/five"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -166,9 +172,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvSix"
                 android:text="@string/six"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -177,9 +184,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvMultiplied"
                 android:text="@string/multiplied"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -197,9 +205,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvOne"
                 android:text="@string/one"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -208,9 +217,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvTwo"
                 android:text="@string/two"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -219,9 +229,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvThree"
                 android:text="@string/three"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -230,9 +241,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvMinus"
                 android:text="@string/minus"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -251,9 +263,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvZero"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -263,9 +276,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvDot"
                 android:text="@string/dot"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -274,9 +288,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/selector"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:gravity="center"
+                android:onClick="tvPlus"
                 android:text="@string/plus"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>

@@ -61,11 +61,12 @@ class DBOperator {
         return false;
     }
 
-    public int update(String oldMoney, String oldCategory, String oldDate, String oldTime, String oldNote, String newMoney, String newCategory, String newDate, String newTime, String newNote) {
+    public int update(String oldId, String oldMoney, String oldCategory, String oldDate, String oldTime, String oldNote, String newId, String newMoney, String newCategory, String newDate, String newTime, String newNote) {
         database = mDBOpenHelper.getWritableDatabase();
         int i = -1;
         if (database.isOpen()) {
             ContentValues contentValues = new ContentValues();
+            contentValues.put(DBOpenHelper.ID, newId);
             contentValues.put(DBOpenHelper.DATA_MONEY, newMoney);
             if (TextUtils.isEmpty(newCategory)) {
                 contentValues.put(DBOpenHelper.DATA_CATEGORY, mContext.getString(R.string.not_set));
@@ -79,7 +80,7 @@ class DBOperator {
             } else {
                 contentValues.put(DBOpenHelper.DATA_NOTE, newNote);
             }
-            i = database.update(tableName, contentValues, "money=? AND category=? AND date=? AND time=? AND note=?", new String[]{oldMoney, oldCategory, oldDate, oldTime, oldNote});
+            i = database.update(tableName, contentValues, "id=? AND money=? AND category=? AND date=? AND time=? AND note=?", new String[]{oldId, oldMoney, oldCategory, oldDate, oldTime, oldNote});
             database.close();
         }
         return i;
@@ -94,16 +95,19 @@ class DBOperator {
             Cursor cursor = database.query(tableName, null, null, null, null, null, null);
             while (cursor.moveToNext()) {
                 DataBean dataBean = new DataBean();
+                int idIndex = cursor.getColumnIndex(DBOpenHelper.ID);
                 int moneyIndex = cursor.getColumnIndex(DBOpenHelper.DATA_MONEY);
                 int categoryIndex = cursor.getColumnIndex(DBOpenHelper.DATA_CATEGORY);
                 int dateIndex = cursor.getColumnIndex(DBOpenHelper.DATA_DATE);
                 int timeIndex = cursor.getColumnIndex(DBOpenHelper.DATA_TIME);
                 int noteIndex = cursor.getColumnIndex(DBOpenHelper.DATA_NOTE);
+                String idStr = cursor.getString(idIndex);
                 String moneyStr = cursor.getString(moneyIndex);
                 String categoryStr = cursor.getString(categoryIndex);
                 String dateStr = cursor.getString(dateIndex);
                 String timeStr = cursor.getString(timeIndex);
                 String noteStr = cursor.getString(noteIndex);
+                dataBean.setId(Integer.parseInt(idStr));
                 dataBean.setMoney(moneyStr);
                 dataBean.setCategory(categoryStr);
                 dataBean.setDate(dateStr);

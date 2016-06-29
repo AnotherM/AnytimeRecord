@@ -5,8 +5,13 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,79 +20,95 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-
-@SuppressWarnings("ALL")
-public class EditActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView idTV;
+public class ScrollingActivity extends AppCompatActivity implements View.OnClickListener {
+    //声明控件
+    private static List<DataBean> dataBeanList = new ArrayList<>();
     private EditText moneyET;
     private EditText categoryET;
     private TextView dateTV;
-    private Button dateBtn;
     private TextView timeTV;
-    private Button timeBtn;
     private EditText noteET;
-    private Button calculatorBtn;
-    private FloatingActionButton doneFAB;
-    private int getid;
-    private String getId;
-    private String getMoney;
-    private String getCategory;
-    private String getDate;
-    private String getTime;
-    private String getNote;
     private DBOperator dbOperator;
+    private DataAdapter dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_scrolling);
+        //初始化控件
+        moneyET = (EditText) findViewById(R.id.et_money);
+        categoryET = (EditText) findViewById(R.id.et_category);
+        dateTV = (TextView) findViewById(R.id.tv_date);
+        Button dateBtn = (Button) findViewById(R.id.btn_date);
+        timeTV = (TextView) findViewById(R.id.tv_time);
+        Button timeBtn = (Button) findViewById(R.id.btn_time);
+        noteET = (EditText) findViewById(R.id.et_notes);
+        Button doneBtn = (Button) findViewById(R.id.btn_done);
+        FloatingActionButton calculatorFAB = (FloatingActionButton) findViewById(R.id.fab_calculator);
 
-        idTV = (TextView) findViewById(R.id.tv_id_EA);
-        moneyET = (EditText) findViewById(R.id.et_money_EA);
-        categoryET = (EditText) findViewById(R.id.et_category_EA);
-        dateTV = (TextView) findViewById(R.id.tv_date_EA);
-        dateBtn = (Button) findViewById(R.id.btn_date_EA);
-        timeTV = (TextView) findViewById(R.id.tv_time_EA);
-        timeBtn = (Button) findViewById(R.id.btn_time_EA);
-        noteET = (EditText) findViewById(R.id.et_notes_EA);
-        calculatorBtn = (Button) findViewById(R.id.btn_calculator);
-        doneFAB = (FloatingActionButton) findViewById(R.id.fab_done);
-        dbOperator = new DBOperator(this, DBOpenHelper.TABLE_NAME);
-
+        //响应事件
         dateBtn.setOnClickListener(this);
         timeBtn.setOnClickListener(this);
-        calculatorBtn.setOnClickListener(this);
-        doneFAB.setOnClickListener(this);
-        Intent getIntent = getIntent();
-        getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
-        getId = String.valueOf(getid);
-        getMoney = getIntent.getStringExtra(DBOpenHelper.DATA_MONEY);
-        getCategory = getIntent.getStringExtra(DBOpenHelper.DATA_CATEGORY);
-        getDate = getIntent.getStringExtra(DBOpenHelper.DATA_DATE);
-        getTime = getIntent.getStringExtra(DBOpenHelper.DATA_TIME);
-        getNote = getIntent.getStringExtra(DBOpenHelper.DATA_NOTE);
+        calculatorFAB.setOnClickListener(this);
+        doneBtn.setOnClickListener(this);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setNestedScrollingEnabled(true);
+        dbOperator = new DBOperator(this, DBOpenHelper.TABLE_NAME);
+        resetData();
+        mRecyclerView.setAdapter(dataAdapter);
 
-        idTV.setText(getId);
-        moneyET.setText(getMoney);
-        categoryET.setText(getCategory);
-        dateTV.setText(getDate);
-        timeTV.setText(getTime);
-        noteET.setText(getNote);
+
+    }
+
+    /*--------创建菜单--------*/
+    //创建菜单
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_scrolling, menu);
+        return true;
+    }
+
+    //菜单响应事件
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.about) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.thanks)
+                    .setView(R.layout.about)
+                    .setPositiveButton(R.string.close, null)
+                    .show();
+        }
+        if (id == R.id.exit) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    /*-------创建菜单-------*/
+
+    public void resetData() {
+        dataBeanList = dbOperator.queryAll();
+        dataAdapter = new DataAdapter(ScrollingActivity.this);
+        dataAdapter.resetData(dataBeanList);
     }
 
     @Override
-    public void onClick(View v) {
-        Calendar c = Calendar.getInstance();
+    public void onClick(final View v) {
+        /*--------时间与日期-------*/
+        Calendar c = Calendar.getInstance();//创建实例
         switch (v.getId()) {
-            case R.id.btn_date_EA:
-                new DatePickerDialog(EditActivity.this,
+            //时间按钮响应事件
+            case R.id.btn_date:
+                new DatePickerDialog(ScrollingActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-                                TextView show = (TextView) findViewById(R.id.tv_date_EA);
+                                TextView show = (TextView) findViewById(R.id.tv_date);
                                 //给小于10的数字添加0
                                 if (monthOfYear < 10 && dayOfMonth > 10) {
                                     show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
@@ -102,13 +123,13 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
                 break;
             //日期按钮响应事件
-            case R.id.btn_time_EA:
-                new TimePickerDialog(EditActivity.this,
+            case R.id.btn_time:
+                new TimePickerDialog(ScrollingActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view,
                                                   int hourOfDay, int minute) {
-                                TextView show = (TextView) findViewById(R.id.tv_time_EA);
+                                TextView show = (TextView) findViewById(R.id.tv_time);
                                 //给小于10的数字添加0
                                 if (hourOfDay < 10 && minute > 10) {
                                     show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
@@ -125,23 +146,19 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             /*-------时间与日期-------*/
 
             //开启计算器
-            case R.id.btn_calculator:
+            case R.id.fab_calculator:
                 Intent intent = new Intent(this, CalculatorActivity.class);
                 startActivity(intent);
                 break;
 
-            case R.id.fab_done:
+            case R.id.btn_done:
                 if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
                     Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息
                 } else {
-                    dbOperator.update(getId, getMoney, getCategory, getDate, getTime, getNote,
-                            idTV.getText().toString().trim(),
-                            moneyET.getText().toString().trim(),
-                            categoryET.getText().toString().trim(),
-                            dateTV.getText().toString().trim(),
-                            timeTV.getText().toString().trim(),
-                            noteET.getText().toString().trim());
-                    Toast.makeText(this, getResources().getString(R.string.finished), Toast.LENGTH_LONG).show();
+                    dbOperator.insert(moneyET.getText().toString().trim(), categoryET.getText().toString().trim(), dateTV.getText().toString().trim(), timeTV.getText().toString().trim(), noteET.getText().toString().trim());
+                    Toast.makeText(this, getResources().getString(R.string.input_complete), Toast.LENGTH_LONG).show();
+                    dataBeanList = dbOperator.queryAll();
+                    dataAdapter.resetData(dataBeanList);
                 }
                 break;
         }

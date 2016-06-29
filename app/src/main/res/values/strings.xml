@@ -35,7 +35,7 @@
     <string name="equal">＝</string>
     <string name="clear">C</string>
     <string name="dot">.</string>
-    <string name="not_zero">The Divisor cannot be zero</string>
+    <string name="not_zero">ERROR</string>
 
 
     <string name="close">Close </string>
@@ -46,21 +46,6 @@
     <string name="suc">Success</string>
     <string name="edit">Edit</string>
 
-    <!--更新日志/update detail-->
-    <string name="ver_1.0">1.0:Alpha version.Create some new ideas</string>
-    <string name="ver_1.1">1.1:Finish some widget</string>
-    <string name="ver_1.2">1.2:Finish basic layout demo</string>
-    <string name="ver_1.3">1.3:Complete some basic feature，such as date and time chooser</string>
-    <string name="ver_1.4">1.4:The main coder\'s computer motherboard burned,project delayed</string>
-    <string name="ver_1.5">1.5:Re do the project and UI changes</string>
-    <string name="ver_1.6">1.6:Bug fix and more works</string>
-    <string name="ver_1.7">1.7:Beta version.Decide the final icon</string>
-    <string name="ver_1.8">1.8:Try to find some new idea</string>
-    <string name="ver_1.9">1.9:UI changes</string>
-    <string name="ver_2.0">2.0:Finish the calculator</string>
-    <string name="ver_2.1">2.1:Reduce project,clean useless ideas</string>
-    <string name="ver_2.2">2.2:Improve the edit and the delete future</string>
-    <string name="ver_2.3">2.3:Release version.UI improve,Catch some little bugs</string>
 
     <string name="thanks">Thank you for using this application</string>
     <string name="update_detail">Update Detail</string>

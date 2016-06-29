@@ -1,53 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="m.another.anytimerecord.EditActivity">
+    tools:context="m.another.anytimerecord.ScrollingActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/layout_margin_16dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_id_EA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/money"
-                        android:src="@drawable/ic_credit_card" />
-
-                    <EditText
-                        android:id="@+id/et_money_EA"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/money"
-                        android:inputType="numberDecimal" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,16 +36,18 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:contentDescription="@string/category"
-                        android:src="@drawable/ic_cash" />
+                        android:contentDescription="@string/money"
+                        android:src="@drawable/ic_credit_card" />
 
                     <EditText
-                        android:id="@+id/et_category_EA"
-                        android:layout_width="0dp"
+                        android:id="@+id/et_money"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="7"
-                        android:hint="@string/category" />
+                        android:hint="@string/money"
+                        android:inputType="numberDecimal" />
+
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,7 +61,7 @@
                         android:src="@drawable/ic_file_document" />
 
                     <EditText
-                        android:id="@+id/et_notes_EA"
+                        android:id="@+id/et_notes"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/note"
@@ -107,18 +88,18 @@
                         android:src="@drawable/ic_calendar" />
 
                     <EditText
-                        android:id="@+id/tv_date_EA"
+                        android:id="@+id/tv_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="7"
                         android:focusable="false"
-                        android:hint="@string/not_time"
+                        android:hint="@string/not_date"
                         android:inputType="date"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Button
-                        android:id="@+id/btn_date_EA"
+                        android:id="@+id/btn_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -137,7 +118,7 @@
                         android:src="@drawable/ic_clock" />
 
                     <EditText
-                        android:id="@+id/tv_time_EA"
+                        android:id="@+id/tv_time"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -147,7 +128,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Button
-                        android:id="@+id/btn_time_EA"
+                        android:id="@+id/btn_time"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -162,22 +143,48 @@
                     android:layout_marginTop="@dimen/layout_margin_4dp"
                     android:background="?android:attr/listDivider" />
 
-                <Button
-                    android:id="@+id/btn_calculator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_activity_calculator" />
-            </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/layout_margin_16dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/category"
+                        android:src="@drawable/ic_cash" />
+
+                    <EditText
+                        android:id="@+id/et_category"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:hint="@string/category" />
+
+                    <Button
+                        android:id="@+id/btn_done"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="@string/done" />
+                </LinearLayout>
+
+            </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <include layout="@layout/content_scrolling" />
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_done"
+        android:id="@+id/fab_calculator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_check" />
+        android:src="@drawable/ic_calculator"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>
