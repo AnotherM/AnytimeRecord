@@ -51,15 +51,20 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         FloatingActionButton calculatorFAB = (FloatingActionButton) findViewById(R.id.fab_calculator);
 
         //响应事件
+        assert dateBtn != null;
         dateBtn.setOnClickListener(this);
+        assert timeBtn != null;
         timeBtn.setOnClickListener(this);
+        assert calculatorFAB != null;
         calculatorFAB.setOnClickListener(this);
+        assert doneBtn != null;
         doneBtn.setOnClickListener(this);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        assert mRecyclerView != null;
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setNestedScrollingEnabled(true);
-        dbOperator = new DBOperator(this, DBOpenHelper.TABLE_NAME);
+        dbOperator = new DBOperator(this);
         resetData();
         mRecyclerView.setAdapter(dataAdapter);
 
@@ -90,7 +95,7 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
     }
     /*-------创建菜单-------*/
 
-    public void resetData() {
+    private void resetData() {
         dataBeanList = dbOperator.queryAll();
         dataAdapter = new DataAdapter(ScrollingActivity.this);
         dataAdapter.resetData(dataBeanList);
@@ -111,12 +116,16 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                                 TextView show = (TextView) findViewById(R.id.tv_date);
                                 //给小于10的数字添加0
                                 if (monthOfYear < 10 && dayOfMonth > 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
                                 } else if (monthOfYear > 10 && dayOfMonth < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
                                 } else if (monthOfYear < 10 && dayOfMonth < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
                                 } else {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
                                 }
                             }
@@ -132,12 +141,16 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                                 TextView show = (TextView) findViewById(R.id.tv_time);
                                 //给小于10的数字添加0
                                 if (hourOfDay < 10 && minute > 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
                                 } else if (hourOfDay > 10 && minute < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
                                 } else if (hourOfDay < 10 && minute < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
                                 } else {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
                                 }
                             }

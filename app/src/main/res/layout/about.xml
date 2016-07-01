@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:drawableTop="@drawable/logo"
         android:gravity="center"
         android:text="@string/logo" />
 </ScrollView>

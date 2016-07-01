@@ -80,7 +80,7 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    DBOperator dbOperator = new DBOperator(context.getApplicationContext(), DBOpenHelper.TABLE_NAME);
+                                    DBOperator dbOperator = new DBOperator(context.getApplicationContext());
                                     dbOperator.delete(dataBeanList.get(getAdapterPosition()).getId(), money, category, dataBeanList.get(getAdapterPosition()).getDate(), dataBeanList.get(getAdapterPosition()).getTime(), dataBeanList.get(getAdapterPosition()).getNote());
                                     Snackbar.make(v, R.string.deleted, Snackbar.LENGTH_LONG).show();
                                 }

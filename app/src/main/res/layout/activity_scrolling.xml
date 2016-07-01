@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -162,7 +161,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="7"
-                        android:hint="@string/category" />
+                        android:hint="@string/category"
+                        tools:ignore="NestedWeights" />
 
                     <Button
                         android:id="@+id/btn_done"

@@ -9,10 +9,10 @@
     </style>
 
 
-    <string name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
-    </string>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

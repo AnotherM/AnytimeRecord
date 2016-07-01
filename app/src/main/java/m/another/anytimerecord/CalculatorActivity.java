@@ -7,9 +7,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
+@SuppressWarnings("ALL")
 public class CalculatorActivity extends AppCompatActivity {
-    double num1;
-    double num2;
+    private double num1;
     private EditText tv_result;
     private String strOperator = "+";//显示运算符号
     private StringBuffer sbDisplay = new StringBuffer();//显示运算
@@ -173,6 +173,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void tvEqual(View view) {
         try {
+            double num2;
             if (strOperator.equals("＋")) {
                 num2 = Double.parseDouble(sbDisplay.toString());
                 sbResult = String.valueOf(num1 + num2);
@@ -228,7 +229,7 @@ public class CalculatorActivity extends AppCompatActivity {
         tv_result.setText("0");
     }
 
-    public void textWatcher(final EditText editText) {
+    private void textWatcher(final EditText editText) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

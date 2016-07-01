@@ -4,13 +4,5 @@
     <color name="colorPrimaryDark">#546E7A</color>
     <color name="colorAccent">#616161</color>
 
-    <color name="ext_color">#E5E5E5</color>
-
-    <!--¿Ø¼þµã»÷ºóÑÕÉ«-->
-    <color name="tv_pressed">#D0D0D0</color>
-    <color name="tv_focused">#D0D0D0</color>
-    <color name="tv_selected">#D0D0D0</color>
-    <color name="key_num">#BDBDBD</color>
-    <color name="key_operator">#9E9E9E</color>
-    <color name="key_clear">#90A4AE</color>
+    <!--ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«-->
 </resources>

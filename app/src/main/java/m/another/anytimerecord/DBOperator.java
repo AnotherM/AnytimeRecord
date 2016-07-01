@@ -14,6 +14,7 @@ import java.util.List;
  * Created by MILK on 2016/2/14.
  * Thanks to: http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL
  */
+@SuppressWarnings("ALL")
 class DBOperator {
 
     private final SQLiteOpenHelper mDBOpenHelper;
@@ -21,10 +22,10 @@ class DBOperator {
     private final String tableName;
     private SQLiteDatabase database;
 
-    public DBOperator(Context context, String tableName) {
+    public DBOperator(Context context) {
         this.mContext = context;
         mDBOpenHelper = new DBOpenHelper(context);
-        this.tableName = tableName;
+        this.tableName = DBOpenHelper.TABLE_NAME;
     }
 
     public long insert(String money, String category, String date, String time, String note) {

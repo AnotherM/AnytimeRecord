@@ -9,12 +9,6 @@
     <string name="note">Notes not add</string>
     <string name="done">Done</string>
 
-    <string name="title_activity_setting">Setting</string>
-    <string name="security">Security</string>
-    <string name="set_lock">Set Password</string>
-    <string name="re_lock">Reset Password</string>
-    <string name="del_lock">Delete Password</string>
-
     <!--计算器/calculator-->
     <string name="title_activity_calculator">Calculator</string>
     <string name="one">1</string>
@@ -42,20 +36,15 @@
     <string name="input_error">Check your money/date/time</string>
     <string name="input_complete">Success</string>
     <string name="delete">Delete</string>
-    <string name="fail">Fail</string>
-    <string name="suc">Success</string>
     <string name="edit">Edit</string>
 
 
     <string name="thanks">Thank you for using this application</string>
-    <string name="update_detail">Update Detail</string>
 
     <!--content_main-->
     <string name="ll_money">Money</string>
     <string name="ll_category">Category</string>
     <string name="about">About</string>
-    <string name="action_settings">Setting</string>
-    <string name="ins">Instructions</string>
     <string name="logo">It\'s A Work From ARTeam</string>
     <string name="detail">Detail</string>
     <string name="title_activity_edit">Edit Item</string>
@@ -70,7 +59,6 @@
     <string name="not_set">Not add</string>
     <string name="deleted">The item will be delete after app restart\nMake sure others will not be deleted</string>
     <string name="finished">Modify success,change will save after app restart</string>
-    <string name="tap_for_detail">Click for instructions</string>
     <string name="exit">Exit</string>
 
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->

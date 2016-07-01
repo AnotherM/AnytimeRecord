@@ -54,7 +54,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         noteET = (EditText) findViewById(R.id.et_notes_EA);
         calculatorBtn = (Button) findViewById(R.id.btn_calculator);
         doneFAB = (FloatingActionButton) findViewById(R.id.fab_done);
-        dbOperator = new DBOperator(this, DBOpenHelper.TABLE_NAME);
+        dbOperator = new DBOperator(this);
 
         dateBtn.setOnClickListener(this);
         timeBtn.setOnClickListener(this);
