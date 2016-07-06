@@ -57,8 +57,9 @@
     <string name="show_money">Money:</string>
     <string name="show_category">Category:</string>
     <string name="not_set">Not add</string>
-    <string name="deleted">The item will be delete after app restart\nMake sure others will not be deleted</string>
-    <string name="finished">Modify success,change will save after app restart</string>
+
+    <string name="refresh_finish">Refresh finished</string>
+    <string name="finished">Success</string>
     <string name="exit">Exit</string>
 
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->

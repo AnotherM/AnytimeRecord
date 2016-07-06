@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity implements View.OnClickListener {
+public class ScrollingActivity extends AppCompatActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
     //声明控件
     private static List<DataBean> dataBeanList = new ArrayList<>();
     private EditText moneyET;
@@ -34,6 +36,7 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
     private EditText noteET;
     private DBOperator dbOperator;
     private DataAdapter dataAdapter;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,24 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         dbOperator = new DBOperator(this);
         resetData();
         mRecyclerView.setAdapter(dataAdapter);
+        //下拉刷新
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        assert mSwipeRefreshLayout != null;
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setProgressViewOffset(true, 100, 250);
 
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        assert appBarLayout != null;
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (verticalOffset >= 0) {
+                    mSwipeRefreshLayout.setEnabled(true);
+                } else {
+                    mSwipeRefreshLayout.setEnabled(false);
+                }
+            }
+        });
 
     }
 
@@ -175,5 +195,12 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                 }
                 break;
         }
+    }
+
+
+    public void onRefresh() {
+        dataBeanList = dbOperator.queryAll();
+        dataAdapter.resetData(dataBeanList);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }

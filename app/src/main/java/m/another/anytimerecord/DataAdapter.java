@@ -4,7 +4,6 @@ package m.another.anytimerecord;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -82,7 +81,6 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 public void onClick(DialogInterface dialog, int which) {
                                     DBOperator dbOperator = new DBOperator(context.getApplicationContext());
                                     dbOperator.delete(dataBeanList.get(getAdapterPosition()).getId(), money, category, dataBeanList.get(getAdapterPosition()).getDate(), dataBeanList.get(getAdapterPosition()).getTime(), dataBeanList.get(getAdapterPosition()).getNote());
-                                    Snackbar.make(v, R.string.deleted, Snackbar.LENGTH_LONG).show();
                                 }
                             })
                             .setNegativeButton(R.string.edit, new DialogInterface.OnClickListener() {

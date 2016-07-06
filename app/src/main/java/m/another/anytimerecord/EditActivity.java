@@ -18,19 +18,13 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 
-@SuppressWarnings("ALL")
 public class EditActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView idTV;
     private EditText moneyET;
     private EditText categoryET;
     private TextView dateTV;
-    private Button dateBtn;
     private TextView timeTV;
-    private Button timeBtn;
     private EditText noteET;
-    private Button calculatorBtn;
-    private FloatingActionButton doneFAB;
-    private int getid;
     private String getId;
     private String getMoney;
     private String getCategory;
@@ -48,20 +42,24 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         moneyET = (EditText) findViewById(R.id.et_money_EA);
         categoryET = (EditText) findViewById(R.id.et_category_EA);
         dateTV = (TextView) findViewById(R.id.tv_date_EA);
-        dateBtn = (Button) findViewById(R.id.btn_date_EA);
+        Button dateBtn = (Button) findViewById(R.id.btn_date_EA);
         timeTV = (TextView) findViewById(R.id.tv_time_EA);
-        timeBtn = (Button) findViewById(R.id.btn_time_EA);
+        Button timeBtn = (Button) findViewById(R.id.btn_time_EA);
         noteET = (EditText) findViewById(R.id.et_notes_EA);
-        calculatorBtn = (Button) findViewById(R.id.btn_calculator);
-        doneFAB = (FloatingActionButton) findViewById(R.id.fab_done);
+        Button calculatorBtn = (Button) findViewById(R.id.btn_calculator);
+        FloatingActionButton doneFAB = (FloatingActionButton) findViewById(R.id.fab_done);
         dbOperator = new DBOperator(this);
 
+        assert dateBtn != null;
         dateBtn.setOnClickListener(this);
+        assert timeBtn != null;
         timeBtn.setOnClickListener(this);
+        assert calculatorBtn != null;
         calculatorBtn.setOnClickListener(this);
+        assert doneFAB != null;
         doneFAB.setOnClickListener(this);
         Intent getIntent = getIntent();
-        getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
+        int getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
         getId = String.valueOf(getid);
         getMoney = getIntent.getStringExtra(DBOpenHelper.DATA_MONEY);
         getCategory = getIntent.getStringExtra(DBOpenHelper.DATA_CATEGORY);
@@ -71,9 +69,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         idTV.setText(getId);
         moneyET.setText(getMoney);
-        categoryET.setText(getCategory);
         dateTV.setText(getDate);
         timeTV.setText(getTime);
+        categoryET.setText(getCategory);
         noteET.setText(getNote);
     }
 
@@ -90,12 +88,16 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                                 TextView show = (TextView) findViewById(R.id.tv_date_EA);
                                 //给小于10的数字添加0
                                 if (monthOfYear < 10 && dayOfMonth > 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
                                 } else if (monthOfYear > 10 && dayOfMonth < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
                                 } else if (monthOfYear < 10 && dayOfMonth < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
                                 } else {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
                                 }
                             }
@@ -111,12 +113,16 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                                 TextView show = (TextView) findViewById(R.id.tv_time_EA);
                                 //给小于10的数字添加0
                                 if (hourOfDay < 10 && minute > 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
                                 } else if (hourOfDay > 10 && minute < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
                                 } else if (hourOfDay < 10 && minute < 10) {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
                                 } else {
+                                    assert show != null;
                                     show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
                                 }
                             }
