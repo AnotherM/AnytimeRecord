@@ -94,7 +94,7 @@ class DBOperator {
         List<DataBean> dataBeanList = null;
         if (database.isOpen()) {
             dataBeanList = new ArrayList<>();
-            Cursor cursor = database.query(tableName, null, null, null, null, null, null);
+            Cursor cursor = database.query(tableName, null, null, null, null, null, "id desc");
             while (cursor.moveToNext()) {
                 DataBean dataBean = new DataBean();
                 int idIndex = cursor.getColumnIndex(DBOpenHelper.ID);
