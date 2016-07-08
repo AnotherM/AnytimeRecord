@@ -14,6 +14,7 @@ import java.util.List;
  * Created by MILK on 2016/2/14.
  * Thanks to: http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL
  */
+
 @SuppressWarnings("ALL")
 class DBOperator {
 

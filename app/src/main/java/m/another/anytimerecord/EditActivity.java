@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Calendar;
 
 
@@ -73,6 +76,10 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         timeTV.setText(getTime);
         categoryET.setText(getCategory);
         noteET.setText(getNote);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

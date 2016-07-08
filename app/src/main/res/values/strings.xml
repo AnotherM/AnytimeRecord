@@ -45,7 +45,6 @@
     <string name="ll_money">Money</string>
     <string name="ll_category">Category</string>
     <string name="about">About</string>
-    <string name="logo">It\'s A Work From ARTeam</string>
     <string name="detail">Detail</string>
     <string name="title_activity_edit">Edit Item</string>
 
@@ -58,9 +57,10 @@
     <string name="show_category">Category:</string>
     <string name="not_set">Not add</string>
 
-    <string name="refresh_finish">Refresh finished</string>
     <string name="finished">Success</string>
     <string name="exit">Exit</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->
 </resources>

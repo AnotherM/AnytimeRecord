@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
+
 @SuppressWarnings("ALL")
 public class CalculatorActivity extends AppCompatActivity {
     private double num1;
@@ -22,6 +23,7 @@ public class CalculatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
         tv_result = (EditText) findViewById(R.id.tv_result);
+        assert tv_result != null;
         tv_result.setText("0");
         textWatcher(tv_result);
     }

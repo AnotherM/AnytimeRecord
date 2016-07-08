@@ -9,12 +9,12 @@ android {
             storePassword 'zm+6152+9653'
         }
     }
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "m.another.anytimerecord"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -34,7 +34,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:cardview-v7:24.0.0'
+    compile 'com.google.android.gms:play-services-ads:9.0.2'
 }

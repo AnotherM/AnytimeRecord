@@ -4,10 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by MILK on 2016/2/10.
- */
-@SuppressWarnings("ALL")
+
 class DBOpenHelper extends SQLiteOpenHelper {
     //数据库表的定义
     final static String TABLE_NAME = "data";

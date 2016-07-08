@@ -37,6 +37,7 @@
                 android:gravity="center"
                 android:padding="@dimen/layout_margin_16dp"
                 android:text="@string/ll_money" />
+
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
@@ -44,6 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
+
+
     </LinearLayout>
 
 

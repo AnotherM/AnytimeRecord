@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -74,7 +75,7 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         assert mSwipeRefreshLayout != null;
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setProgressViewOffset(true, 100, 250);
+        mSwipeRefreshLayout.setProgressViewOffset(true, 150, 300);
 
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         assert appBarLayout != null;
@@ -199,8 +200,15 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
 
 
     public void onRefresh() {
-        dataBeanList = dbOperator.queryAll();
-        dataAdapter.resetData(dataBeanList);
-        mSwipeRefreshLayout.setRefreshing(false);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dataBeanList = dbOperator.queryAll();
+                dataAdapter.resetData(dataBeanList);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 500);
+
     }
 }
