@@ -60,8 +60,7 @@
     <string name="finished">Success</string>
     <string name="exit">Exit</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/9921191566</string>
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->
 </resources>
 

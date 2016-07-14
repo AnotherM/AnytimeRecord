@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -49,18 +48,13 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         timeTV = (TextView) findViewById(R.id.tv_time_EA);
         Button timeBtn = (Button) findViewById(R.id.btn_time_EA);
         noteET = (EditText) findViewById(R.id.et_notes_EA);
-        Button calculatorBtn = (Button) findViewById(R.id.btn_calculator);
-        FloatingActionButton doneFAB = (FloatingActionButton) findViewById(R.id.fab_done);
+        Button doneBtn = (Button) findViewById(R.id.btn_done_EA);
         dbOperator = new DBOperator(this);
 
-        assert dateBtn != null;
         dateBtn.setOnClickListener(this);
-        assert timeBtn != null;
         timeBtn.setOnClickListener(this);
-        assert calculatorBtn != null;
-        calculatorBtn.setOnClickListener(this);
-        assert doneFAB != null;
-        doneFAB.setOnClickListener(this);
+        dateBtn.setOnClickListener(this);
+        doneBtn.setOnClickListener(this);
         Intent getIntent = getIntent();
         int getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
         getId = String.valueOf(getid);
@@ -80,6 +74,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
     }
 
     @Override
@@ -137,13 +132,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             /*-------时间与日期-------*/
 
-            //开启计算器
-            case R.id.btn_calculator:
-                Intent intent = new Intent(this, CalculatorActivity.class);
-                startActivity(intent);
-                break;
 
-            case R.id.fab_done:
+            case R.id.btn_done_EA:
                 if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
                     Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息
                 } else {

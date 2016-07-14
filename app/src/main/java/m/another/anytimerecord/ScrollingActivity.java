@@ -3,6 +3,7 @@ package m.another.anytimerecord;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
@@ -52,36 +53,29 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         Button timeBtn = (Button) findViewById(R.id.btn_time);
         noteET = (EditText) findViewById(R.id.et_notes);
         Button doneBtn = (Button) findViewById(R.id.btn_done);
-        FloatingActionButton calculatorFAB = (FloatingActionButton) findViewById(R.id.fab_calculator);
+        FloatingActionButton githubFAB = (FloatingActionButton) findViewById(R.id.fab_github);
 
         //响应事件
-        assert dateBtn != null;
         dateBtn.setOnClickListener(this);
-        assert timeBtn != null;
         timeBtn.setOnClickListener(this);
-        assert calculatorFAB != null;
-        calculatorFAB.setOnClickListener(this);
-        assert doneBtn != null;
         doneBtn.setOnClickListener(this);
+        githubFAB.setOnClickListener(this);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
-        assert mRecyclerView != null;
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setNestedScrollingEnabled(true);
         dbOperator = new DBOperator(this);
         resetData();
         mRecyclerView.setAdapter(dataAdapter);
-        //下拉刷新
+        //下拉刷新 thanks to:http://my.oschina.net/smuswc/blog/612697
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
-        assert mSwipeRefreshLayout != null;
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setProgressViewOffset(true, 150, 300);
 
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-        assert appBarLayout != null;
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
+        appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
                 if (verticalOffset >= 0) {
                     mSwipeRefreshLayout.setEnabled(true);
                 } else {
@@ -179,12 +173,11 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                 break;
             /*-------时间与日期-------*/
 
-            //开启计算器
-            case R.id.fab_calculator:
-                Intent intent = new Intent(this, CalculatorActivity.class);
+            case R.id.fab_github:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://github.com/AnotherM"));
                 startActivity(intent);
                 break;
-
             case R.id.btn_done:
                 if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
                     Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息

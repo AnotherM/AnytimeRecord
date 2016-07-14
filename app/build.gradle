@@ -13,10 +13,10 @@ android {
     buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "m.another.anytimerecord"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -37,5 +37,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
     compile 'com.android.support:cardview-v7:24.0.0'
-    compile 'com.google.android.gms:play-services-ads:9.0.2'
+    compile 'com.google.android.gms:play-services-ads:9.2.1'
+    compile 'com.pgyersdk:sdk:2.4.0'
 }
