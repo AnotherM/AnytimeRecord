@@ -10,26 +10,6 @@
     <string name="done">Done</string>
 
     <!--计算器/calculator-->
-    <string name="title_activity_calculator">Calculator</string>
-    <string name="one">1</string>
-    <string name="two">2</string>
-    <string name="three">3</string>
-    <string name="four">4</string>
-    <string name="five">5</string>
-    <string name="six">6</string>
-    <string name="seven">7</string>
-    <string name="eight">8</string>
-    <string name="nine">9</string>
-    <string name="zero">0</string>
-    <string name="del">DEL</string>
-    <string name="plus">＋</string>
-    <string name="minus">－</string>
-    <string name="multiplied">×</string>
-    <string name="divide">÷</string>
-    <string name="equal">＝</string>
-    <string name="clear">C</string>
-    <string name="dot">.</string>
-    <string name="not_zero">ERROR</string>
 
 
     <string name="close">Close </string>
@@ -60,7 +40,10 @@
     <string name="finished">Success</string>
     <string name="exit">Exit</string>
 
+    <string name="open_source">Open Source</string>
+
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/9921191566</string>
+
     <!--虽然很想排序，但我已经乱套了  /  I have something wrong with the sequence ;) -->
 </resources>
 

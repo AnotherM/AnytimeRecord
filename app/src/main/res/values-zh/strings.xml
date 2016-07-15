@@ -6,26 +6,6 @@
     <string name="time">选择时间</string>
     <string name="done">完成</string>
     <string name="about">关于</string>
-    <string name="clear">C</string>
-    <string name="divide">÷</string>
-    <string name="del">DEL</string>
-    <string name="eight">8</string>
-    <string name="equal">＝</string>
-    <string name="five">5</string>
-    <string name="four">4</string>
-    <string name="minus">－</string>
-    <string name="multiplied">×</string>
-    <string name="nine">9</string>
-    <string name="one">1</string>
-    <string name="plus">＋</string>
-    <string name="seven">7</string>
-    <string name="six">6</string>
-    <string name="three">3</string>
-    <string name="title_activity_calculator">计算器</string>
-    <string name="two">2</string>
-    <string name="zero">0</string>
-    <string name="dot">.</string>
-    <string name="not_zero">ERROR</string>
     <string name="thanks">感谢你使用这个程序</string>
     <string name="input_complete">添加成功</string>
     <string name="edit">编辑</string>
@@ -50,4 +30,5 @@
     <string name="close">关闭</string>
     <string name="input_error">检查你的金额/日期/时间</string>
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/9921191566</string>
+    <string name="open_source">开源许可</string>
 </resources>

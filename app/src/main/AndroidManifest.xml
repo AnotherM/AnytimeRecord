@@ -3,15 +3,10 @@
     package="m.another.anytimerecord">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 获取网络状态 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 网络通信 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 获取设备信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 获取MAC地址 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 读写sdcard，storage等等 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <!-- 允许程序录制音频 -->
@@ -30,7 +25,7 @@
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +36,7 @@
         <activity
             android:name=".EditActivity"
             android:label="@string/title_activity_edit"
-            android:theme="@style/AppTheme.ActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

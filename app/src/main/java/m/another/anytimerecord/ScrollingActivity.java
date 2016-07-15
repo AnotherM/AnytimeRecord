@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +71,9 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         //下拉刷新 thanks to:http://my.oschina.net/smuswc/blog/612697
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_scrolling);
+        setSupportActionBar(toolbar);
 
         AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
         appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
