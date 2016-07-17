@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!--thanks to :http://blog.feng.moe/2015/10/24/something-about-cardview-development/--><!--suppress ALL -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:propertyName="translationZ" android:valueTo="@dimen/layout_margin_4dp" android:valueType="floatType" />
+    </item>
+    <item>
+        <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:propertyName="translationZ" android:valueTo="0dp" android:valueType="floatType" />
+    </item>
+</selector>

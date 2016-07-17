@@ -73,7 +73,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         noteET.setText(getNote);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("5B63BDBF8FD7D9C0BC1226E915CA4F34").build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdView.loadAd(adRequest);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
