@@ -55,19 +55,22 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         noteET = (EditText) findViewById(R.id.et_notes);
         Button doneBtn = (Button) findViewById(R.id.btn_done);
         FloatingActionButton githubFAB = (FloatingActionButton) findViewById(R.id.fab_github);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
 
         //响应事件
         dateBtn.setOnClickListener(this);
         timeBtn.setOnClickListener(this);
         doneBtn.setOnClickListener(this);
         githubFAB.setOnClickListener(this);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setNestedScrollingEnabled(true);
+
         dbOperator = new DBOperator(this);
         resetData();
         mRecyclerView.setAdapter(dataAdapter);
+
         //下拉刷新 thanks to:http://my.oschina.net/smuswc/blog/612697
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);

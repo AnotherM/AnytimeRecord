@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -74,38 +73,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         noteET.setText(getNote);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("5B63BDBF8FD7D9C0BC1226E915CA4F34").build();
         mAdView.loadAd(adRequest);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
         setSupportActionBar(toolbar);
-
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                super.onAdLeftApplication();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-        });
     }
 
     @Override
