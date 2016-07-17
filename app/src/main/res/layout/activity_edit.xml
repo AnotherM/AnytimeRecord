@@ -7,26 +7,18 @@
     android:background="@color/primary"
     android:orientation="vertical"
     android:theme="@style/AppTheme.AppBarOverlay"
-    tools:context="m.another.anytimerecord.EditActivity"
-    tools:ignore="Overdraw">
+    tools:context="m.another.anytimerecord.EditActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_edit"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/layout_margin_16dp"
+        android:layout_weight="3"
         android:orientation="vertical">
 
         <LinearLayout
@@ -177,5 +169,11 @@
 
     </LinearLayout>
 
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
 </LinearLayout>
