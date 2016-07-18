@@ -16,7 +16,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
-        versionName "1.1"
+        versionName "1.2"
         //noinspection GroovyAssignabilityCheck
         signingConfig signingConfigs.anotherm4
     }
