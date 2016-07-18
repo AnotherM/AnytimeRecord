@@ -5,7 +5,8 @@
     android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="m.another.anytimerecord.ScrollingActivity">
+    tools:context="m.another.anytimerecord.ScrollingActivity"
+    tools:ignore="MissingPrefix">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -50,12 +51,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/money"
-                            android:src="@drawable/ic_credit_card" />
+                            app:ico_color="@android:color/white"
+                            app:ico_icon="cmd-wallet"
+                            app:ico_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/et_money"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:hint="@string/money"
                             android:inputType="numberDecimal" />
 
@@ -71,12 +75,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/note"
-                            android:src="@drawable/ic_file_document" />
+                            app:ico_color="@android:color/white"
+                            app:ico_icon="cmd-note-text"
+                            app:ico_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/et_notes"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:hint="@string/note"
                             android:lines="1" />
 
@@ -97,8 +104,10 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/not_date"
-                            android:src="@drawable/ic_calendar" />
+                            android:contentDescription="@string/date"
+                            app:ico_color="@android:color/white"
+                            app:ico_icon="cmd-calendar"
+                            app:ico_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/tv_date"
@@ -127,8 +136,10 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/not_time"
-                            android:src="@drawable/ic_clock" />
+                            android:contentDescription="@string/time"
+                            app:ico_color="@android:color/white"
+                            app:ico_icon="cmd-clock"
+                            app:ico_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/tv_time"
@@ -167,12 +178,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/category"
-                            android:src="@drawable/ic_cash" />
+                            app:ico_color="@android:color/white"
+                            app:ico_icon="cmd-file-document"
+                            app:ico_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/et_category"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:layout_weight="7"
                             android:hint="@string/category"
                             tools:ignore="NestedWeights" />

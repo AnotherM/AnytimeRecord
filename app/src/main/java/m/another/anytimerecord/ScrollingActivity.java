@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.mikepenz.iconics.context.IconicsLayoutInflater;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +46,7 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
         //初始化控件
@@ -102,16 +106,21 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
 
     //菜单响应事件
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.about) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.thanks)
-                    .setView(R.layout.about)
-                    .setPositiveButton(R.string.close, null)
-                    .show();
-        }
-        if (id == R.id.exit) {
-            finish();
+        switch (item.getItemId()) {
+            case R.id.about: {
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.thanks)
+                        .setView(R.layout.about)
+                        .setPositiveButton(R.string.close, null)
+                        .show();
+                break;
+            }
+            case R.id.exit: {
+                finish();
+                break;
+            }
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -194,6 +203,8 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                     dataBeanList = dbOperator.queryAll();
                     dataAdapter.resetData(dataBeanList);
                 }
+                break;
+            default:
                 break;
         }
     }

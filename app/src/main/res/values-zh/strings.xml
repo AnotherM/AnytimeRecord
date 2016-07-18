@@ -29,6 +29,5 @@
     <string name="exit">退出</string>
     <string name="close">关闭</string>
     <string name="input_error">检查你的金额/日期/时间</string>
-    <string name="open_source">开源许可</string>
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/3188170363</string>
 </resources>

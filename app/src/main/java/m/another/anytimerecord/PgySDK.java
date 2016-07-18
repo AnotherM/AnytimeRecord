@@ -8,6 +8,6 @@ public class PgySDK extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        PgyCrashManager.register(this);
+        PgyCrashManager.unregister();
     }
 }

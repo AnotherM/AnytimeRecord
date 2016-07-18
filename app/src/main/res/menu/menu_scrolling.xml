@@ -3,12 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="m.another.anytimerecord.ScrollingActivity">
     <item
-        android:orderInCategory="10"
-        android:title="@string/open_source" />
-    <item
         android:id="@+id/about"
         android:orderInCategory="11"
-        android:title="@string/about" />
+        android:title="@string/about"
+        app:showAsAction="never" />
     <item
         android:id="@+id/exit"
         android:orderInCategory="12"
