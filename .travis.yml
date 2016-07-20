@@ -1,7 +1,30 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
- - rbx-2
-# uncomment and edit the following line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+language: android
+
+sudo: false
+
+android:
+  components:
+  - build-tools-23.0.1
+  - android-23
+  - extra-android-m2repository
+  - extra-android-support
+
+git:
+  submodules: false
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule init && git submodule update
+
+script:
+  - "./gradlew assembleRelease"
+
+before_deploy:
+  - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/app-release.apk
+deploy:
+  provider: releases
+  api_key:
+    secure: 322704836d634833447367cd61a92fedbac97461
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true

@@ -3,14 +3,14 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         anotherm4 {
-            keyAlias 'anotherm4'
-            keyPassword 'zm+6152+9653'
-            storeFile file('D:/Android/KeyStore/anotherm4.jks')
-            storePassword 'zm+6152+9653'
+            storePassword project.hasProperty("KEYSTORE_PASS") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")
+            keyAlias project.hasProperty("ALIAS_NAME") ? ALIAS_NAME : System.getenv("ALIAS_NAME")
+            keyPassword project.hasProperty("ALIAS_PASS") ? ALIAS_PASS : System.getenv("ALIAS_PASS")
+            storeFile file('D:/WorkSpace/AndroidProject/AnytimeRecord/anotherm4.jks')
         }
     }
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "m.another.anytimerecord"
         minSdkVersion 16
@@ -44,9 +44,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support:design:24.0.0'
-    compile 'com.android.support:cardview-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:24.1.0'
+    compile 'com.android.support:design:24.1.0'
+    compile 'com.android.support:cardview-v7:24.1.0'
     compile 'com.pgyersdk:sdk:2.4.0'
     compile 'com.google.android.gms:play-services-ads:9.2.1'
     compile 'com.mikepenz:iconics-core:2.6.7@aar'
