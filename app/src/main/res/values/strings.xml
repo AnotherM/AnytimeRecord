@@ -17,6 +17,8 @@
     <string name="input_complete">Success</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
     <string name="thanks">Thank you for using this application</string>
@@ -39,6 +41,15 @@
 
     <string name="finished">Success</string>
     <string name="exit">Exit</string>
+
+    <string name="no_update">The new version is not detected</string>
+    <string name="update_title">There is a new version</string>
+    <string name="update_message">Would you want to download it?</string>
+    <string name="update">Check for updates</string>
+
+    <string name="permission_title">Permission Request</string>
+    <string name="permission_message">There\'s need some permission in order to apply the update and collect logs,Allow?</string>
+    <string name="permission_denied">Permission Denied\n If the application crash frequently\nPlease reopen it at permission manager</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/3188170363</string>
 

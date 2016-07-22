@@ -10,22 +10,19 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
-            android:fitsSystemWindows="true"
             android:theme="@style/AppTheme.AppBarOverlay">
 
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <android.support.v7.widget.Toolbar
@@ -38,22 +35,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/layout_margin_16dp"
+                    android:layout_marginLeft="@dimen/layout_margin_16dp"
+                    android:layout_marginRight="@dimen/layout_margin_16dp"
+                    android:layout_marginTop="@dimen/layout_margin_48dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/layout_margin_16dp"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <com.mikepenz.iconics.view.IconicsImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/money"
-                            app:ico_color="@android:color/white"
-                            app:ico_icon="cmd-wallet"
-                            app:ico_size="@dimen/icon_size" />
+                            app:iiv_color="@android:color/white"
+                            app:iiv_icon="cmd-wallet"
+                            app:iiv_size="@dimen/icon_size" />
+
 
                         <EditText
                             android:id="@+id/et_money"
@@ -71,13 +70,13 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <com.mikepenz.iconics.view.IconicsImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/note"
-                            app:ico_color="@android:color/white"
-                            app:ico_icon="cmd-note-text"
-                            app:ico_size="@dimen/icon_size" />
+                            app:iiv_color="@android:color/white"
+                            app:iiv_icon="cmd-note-text"
+                            app:iiv_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/et_notes"
@@ -101,13 +100,13 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <com.mikepenz.iconics.view.IconicsImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/date"
-                            app:ico_color="@android:color/white"
-                            app:ico_icon="cmd-calendar"
-                            app:ico_size="@dimen/icon_size" />
+                            app:iiv_color="@android:color/white"
+                            app:iiv_icon="cmd-calendar"
+                            app:iiv_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/tv_date"
@@ -121,10 +120,10 @@
                             android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <Button
-                            android:id="@+id/btn_date"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:onClick="SADateBtn"
                             android:text="@string/date" />
                     </LinearLayout>
 
@@ -133,13 +132,13 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <com.mikepenz.iconics.view.IconicsImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/time"
-                            app:ico_color="@android:color/white"
-                            app:ico_icon="cmd-clock"
-                            app:ico_size="@dimen/icon_size" />
+                            app:iiv_color="@android:color/white"
+                            app:iiv_icon="cmd-clock"
+                            app:iiv_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/tv_time"
@@ -152,10 +151,10 @@
                             android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <Button
-                            android:id="@+id/btn_time"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:onClick="SATimeBtn"
                             android:text="@string/time" />
 
                     </LinearLayout>
@@ -174,13 +173,13 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <com.mikepenz.iconics.view.IconicsImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/category"
-                            app:ico_color="@android:color/white"
-                            app:ico_icon="cmd-file-document"
-                            app:ico_size="@dimen/icon_size" />
+                            app:iiv_color="@android:color/white"
+                            app:iiv_icon="cmd-file-document"
+                            app:iiv_size="@dimen/icon_size" />
 
                         <EditText
                             android:id="@+id/et_category"
@@ -192,10 +191,10 @@
                             tools:ignore="NestedWeights" />
 
                         <Button
-                            android:id="@+id/btn_done"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:onClick="SADoneBtn"
                             android:text="@string/done" />
                     </LinearLayout>
 
@@ -207,10 +206,10 @@
         <include layout="@layout/content_scrolling" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_github"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
+            android:onClick="SAFloatActionButton"
             android:src="@drawable/ic_github"
             app:layout_anchor="@id/app_bar"
             app:layout_anchorGravity="bottom|end" />

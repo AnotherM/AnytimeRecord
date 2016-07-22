@@ -19,7 +19,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin_16dp"
+        android:layout_marginLeft="@dimen/layout_margin_16dp"
+        android:layout_marginRight="@dimen/layout_margin_16dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -27,13 +28,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/money"
-                app:ico_color="@android:color/white"
-                app:ico_icon="cmd-wallet"
-                app:ico_size="@dimen/icon_size" />
+                app:iiv_color="@android:color/white"
+                app:iiv_icon="cmd-wallet"
+                app:iiv_size="@dimen/icon_size" />
 
             <EditText
                 android:id="@+id/et_money_EA"
@@ -49,13 +50,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/note"
-                app:ico_color="@android:color/white"
-                app:ico_icon="cmd-note-text"
-                app:ico_size="@dimen/icon_size" />
+                android:contentDescription="@string/category"
+                app:iiv_color="@android:color/white"
+                app:iiv_icon="cmd-file-document"
+                app:iiv_size="@dimen/icon_size" />
 
             <EditText
                 android:id="@+id/et_category_EA"
@@ -70,13 +71,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/category"
-                app:ico_color="@android:color/white"
-                app:ico_icon="cmd-file-document"
-                app:ico_size="@dimen/icon_size" />
+                android:contentDescription="@string/note"
+                app:iiv_color="@android:color/white"
+                app:iiv_icon="cmd-note-text"
+                app:iiv_size="@dimen/icon_size" />
 
             <EditText
                 android:id="@+id/et_notes_EA"
@@ -99,13 +100,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/date"
-                app:ico_color="@android:color/white"
-                app:ico_icon="cmd-calendar"
-                app:ico_size="@dimen/icon_size" />
+                app:iiv_color="@android:color/white"
+                app:iiv_icon="cmd-calendar"
+                app:iiv_size="@dimen/icon_size" />
 
             <EditText
                 android:id="@+id/tv_date_EA"
@@ -114,15 +115,15 @@
                 android:layout_gravity="center"
                 android:layout_weight="7"
                 android:focusable="false"
-                android:hint="@string/not_time"
+                android:hint="@string/not_date"
                 android:inputType="date"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
-                android:id="@+id/btn_date_EA"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:onClick="EADateBtn"
                 android:text="@string/date" />
         </LinearLayout>
 
@@ -131,13 +132,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.mikepenz.iconics.view.IconicsImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/time"
-                app:ico_color="@android:color/white"
-                app:ico_icon="cmd-clock"
-                app:ico_size="@dimen/icon_size" />
+                app:iiv_color="@android:color/white"
+                app:iiv_icon="cmd-clock"
+                app:iiv_size="@dimen/icon_size" />
 
             <EditText
                 android:id="@+id/tv_time_EA"
@@ -150,10 +151,10 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
-                android:id="@+id/btn_time_EA"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:onClick="EATimeBtn"
                 android:text="@string/time" />
 
         </LinearLayout>
@@ -172,9 +173,9 @@
             android:visibility="invisible" />
 
         <Button
-            android:id="@+id/btn_done_EA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="EADoneBtn"
             android:text="@string/done" />
 
     </LinearLayout>

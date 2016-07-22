@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="m.another.anytimerecord.ScrollingActivity">
     <item
+        android:id="@+id/update"
+        android:orderInCategory="10"
+        android:title="@string/update"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/about"
         android:orderInCategory="11"
         android:title="@string/about"
@@ -12,4 +17,5 @@
         android:orderInCategory="12"
         android:title="@string/exit"
         app:showAsAction="never" />
+
 </menu>

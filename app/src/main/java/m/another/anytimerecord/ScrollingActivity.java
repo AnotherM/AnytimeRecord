@@ -1,14 +1,14 @@
 package m.another.anytimerecord;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,20 +19,20 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.mikepenz.iconics.context.IconicsLayoutInflater;
+import com.pgyersdk.update.PgyUpdateManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
+public class ScrollingActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
     //声明控件
     private static List<DataBean> dataBeanList = new ArrayList<>();
     private EditText moneyET;
@@ -42,30 +42,21 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
     private EditText noteET;
     private DBOperator dbOperator;
     private DataAdapter dataAdapter;
+    private Calendar mCalendar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
-        //初始化控件
         moneyET = (EditText) findViewById(R.id.et_money);
         categoryET = (EditText) findViewById(R.id.et_category);
         dateTV = (TextView) findViewById(R.id.tv_date);
-        Button dateBtn = (Button) findViewById(R.id.btn_date);
         timeTV = (TextView) findViewById(R.id.tv_time);
-        Button timeBtn = (Button) findViewById(R.id.btn_time);
         noteET = (EditText) findViewById(R.id.et_notes);
-        Button doneBtn = (Button) findViewById(R.id.btn_done);
-        FloatingActionButton githubFAB = (FloatingActionButton) findViewById(R.id.fab_github);
+        mCalendar = Calendar.getInstance();
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
 
-        //响应事件
-        dateBtn.setOnClickListener(this);
-        timeBtn.setOnClickListener(this);
-        doneBtn.setOnClickListener(this);
-        githubFAB.setOnClickListener(this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -95,6 +86,10 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
+        String permission[] = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.RECORD_AUDIO};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(permission, 0);
+        }
     }
 
     /*--------创建菜单--------*/
@@ -119,6 +114,9 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             }
+            case R.id.update:
+                PgyUpdateManager.register(this);
+                break;
             default:
                 break;
         }
@@ -130,83 +128,6 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
         dataBeanList = dbOperator.queryAll();
         dataAdapter = new DataAdapter(ScrollingActivity.this);
         dataAdapter.resetData(dataBeanList);
-    }
-
-    @Override
-    public void onClick(final View v) {
-        /*--------时间与日期-------*/
-        Calendar c = Calendar.getInstance();//创建实例
-        switch (v.getId()) {
-            //时间按钮响应事件
-            case R.id.btn_date:
-                new DatePickerDialog(ScrollingActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                TextView show = (TextView) findViewById(R.id.tv_date);
-                                //给小于10的数字添加0
-                                if (monthOfYear < 10 && dayOfMonth > 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
-                                } else if (monthOfYear > 10 && dayOfMonth < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
-                                } else if (monthOfYear < 10 && dayOfMonth < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
-                                } else {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
-                                }
-                            }
-                        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
-                break;
-            //日期按钮响应事件
-            case R.id.btn_time:
-                new TimePickerDialog(ScrollingActivity.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view,
-                                                  int hourOfDay, int minute) {
-                                TextView show = (TextView) findViewById(R.id.tv_time);
-                                //给小于10的数字添加0
-                                if (hourOfDay < 10 && minute > 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
-                                } else if (hourOfDay > 10 && minute < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
-                                } else if (hourOfDay < 10 && minute < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
-                                } else {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
-                                }
-                            }
-                        }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), true).show();
-                break;
-            /*-------时间与日期-------*/
-
-            case R.id.fab_github:
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://github.com/AnotherM"));
-                startActivity(intent);
-                break;
-            case R.id.btn_done:
-                if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
-                    Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息
-                } else {
-                    dbOperator.insert(moneyET.getText().toString().trim(), categoryET.getText().toString().trim(), dateTV.getText().toString().trim(), timeTV.getText().toString().trim(), noteET.getText().toString().trim());
-                    Toast.makeText(this, getResources().getString(R.string.input_complete), Toast.LENGTH_LONG).show();
-                    dataBeanList = dbOperator.queryAll();
-                    dataAdapter.resetData(dataBeanList);
-                }
-                break;
-            default:
-                break;
-        }
     }
 
 
@@ -221,5 +142,72 @@ public class ScrollingActivity extends AppCompatActivity implements View.OnClick
             }
         }, 500);
 
+    }
+
+    public void SADateBtn(View view) {
+        new DatePickerDialog(ScrollingActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        TextView show = (TextView) findViewById(R.id.tv_date);
+                        //给小于10的数字添加0
+                        if (monthOfYear < 10 && dayOfMonth > 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
+                        } else if (monthOfYear > 10 && dayOfMonth < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
+                        } else if (monthOfYear < 10 && dayOfMonth < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
+                        } else {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
+                        }
+                    }
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    public void SATimeBtn(View view) {
+        new TimePickerDialog(ScrollingActivity.this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view,
+                                          int hourOfDay, int minute) {
+                        TextView show = (TextView) findViewById(R.id.tv_time);
+                        //给小于10的数字添加0
+                        if (hourOfDay < 10 && minute > 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
+                        } else if (hourOfDay > 10 && minute < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
+                        } else if (hourOfDay < 10 && minute < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
+                        } else {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
+                        }
+                    }
+                }, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE), true).show();
+    }
+
+    public void SADoneBtn(View view) {
+        if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
+            Toast.makeText(this, R.string.input_error, Toast.LENGTH_LONG).show();//返回失败消息
+        } else {
+            dbOperator.insert(moneyET.getText().toString().trim(), categoryET.getText().toString().trim(), dateTV.getText().toString().trim(), timeTV.getText().toString().trim(), noteET.getText().toString().trim());
+            Toast.makeText(this, R.string.input_complete, Toast.LENGTH_LONG).show();
+            dataBeanList = dbOperator.queryAll();
+            dataAdapter.resetData(dataBeanList);
+        }
+    }
+
+    public void SAFloatActionButton(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://github.com/AnotherM"));
+        startActivity(intent);
     }
 }

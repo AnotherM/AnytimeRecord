@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import java.util.Calendar;
 
 
-public class EditActivity extends AppCompatActivity implements View.OnClickListener {
+public class EditActivity extends AppCompatActivity {
     private TextView idTV;
     private EditText moneyET;
     private EditText categoryET;
@@ -39,6 +38,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     private String getNote;
     private DBOperator dbOperator;
     private AdView mAdView;
+    private Calendar mCalendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
@@ -49,17 +50,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         moneyET = (EditText) findViewById(R.id.et_money_EA);
         categoryET = (EditText) findViewById(R.id.et_category_EA);
         dateTV = (TextView) findViewById(R.id.tv_date_EA);
-        Button dateBtn = (Button) findViewById(R.id.btn_date_EA);
         timeTV = (TextView) findViewById(R.id.tv_time_EA);
-        Button timeBtn = (Button) findViewById(R.id.btn_time_EA);
         noteET = (EditText) findViewById(R.id.et_notes_EA);
-        Button doneBtn = (Button) findViewById(R.id.btn_done_EA);
         dbOperator = new DBOperator(this);
+        mCalendar = Calendar.getInstance();
 
-        dateBtn.setOnClickListener(this);
-        timeBtn.setOnClickListener(this);
-        dateBtn.setOnClickListener(this);
-        doneBtn.setOnClickListener(this);
         Intent getIntent = getIntent();
         int getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
         getId = String.valueOf(getid);
@@ -85,78 +80,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
     }
 
-    @Override
-    public void onClick(View v) {
-        Calendar c = Calendar.getInstance();
-        switch (v.getId()) {
-            case R.id.btn_date_EA:
-                new DatePickerDialog(EditActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                TextView show = (TextView) findViewById(R.id.tv_date_EA);
-                                //给小于10的数字添加0
-                                if (monthOfYear < 10 && dayOfMonth > 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
-                                } else if (monthOfYear > 10 && dayOfMonth < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
-                                } else if (monthOfYear < 10 && dayOfMonth < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
-                                } else {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
-                                }
-                            }
-                        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
-                break;
-            //日期按钮响应事件
-            case R.id.btn_time_EA:
-                new TimePickerDialog(EditActivity.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view,
-                                                  int hourOfDay, int minute) {
-                                TextView show = (TextView) findViewById(R.id.tv_time_EA);
-                                //给小于10的数字添加0
-                                if (hourOfDay < 10 && minute > 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
-                                } else if (hourOfDay > 10 && minute < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
-                                } else if (hourOfDay < 10 && minute < 10) {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
-                                } else {
-                                    assert show != null;
-                                    show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
-                                }
-                            }
-                        }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), true).show();
-                break;
-            /*-------时间与日期-------*/
-
-
-            case R.id.btn_done_EA:
-                if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
-                    Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息
-                } else {
-                    dbOperator.update(getId, getMoney, getCategory, getDate, getTime, getNote,
-                            idTV.getText().toString().trim(),
-                            moneyET.getText().toString().trim(),
-                            categoryET.getText().toString().trim(),
-                            dateTV.getText().toString().trim(),
-                            timeTV.getText().toString().trim(),
-                            noteET.getText().toString().trim());
-                    Toast.makeText(this, getResources().getString(R.string.finished), Toast.LENGTH_LONG).show();
-                }
-                break;
-        }
-    }
 
     @Override
     public void onPause() {
@@ -186,5 +109,70 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             mAdView.destroy();
         }
         super.onDestroy();
+    }
+
+    public void EADateBtn(View view) {
+        new DatePickerDialog(EditActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        TextView show = (TextView) findViewById(R.id.tv_date_EA);
+                        //给小于10的数字添加0
+                        if (monthOfYear < 10 && dayOfMonth > 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append(dayOfMonth));
+                        } else if (monthOfYear > 10 && dayOfMonth < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
+                        } else if (monthOfYear < 10 && dayOfMonth < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append("0").append(monthOfYear + 1).append("/").append("0").append(dayOfMonth));
+                        } else {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(year).append("/").append(monthOfYear + 1).append("/").append(dayOfMonth));
+                        }
+                    }
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    public void EATimeBtn(View view) {
+        new TimePickerDialog(EditActivity.this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view,
+                                          int hourOfDay, int minute) {
+                        TextView show = (TextView) findViewById(R.id.tv_time_EA);
+                        //给小于10的数字添加0
+                        if (hourOfDay < 10 && minute > 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append(minute));
+                        } else if (hourOfDay > 10 && minute < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(hourOfDay).append(":").append("0").append(minute));
+                        } else if (hourOfDay < 10 && minute < 10) {
+                            assert show != null;
+                            show.setText(new StringBuffer().append("0").append(hourOfDay).append(":").append("0").append(minute));
+                        } else {
+                            assert show != null;
+                            show.setText(new StringBuffer().append(hourOfDay).append(":").append(minute));
+                        }
+                    }
+                }, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE), true).show();
+    }
+
+    public void EADoneBtn(View view) {
+        if (TextUtils.isEmpty(moneyET.getText()) || TextUtils.isEmpty(dateTV.getText()) || TextUtils.isEmpty(timeTV.getText())) {
+            Toast.makeText(this, getResources().getString(R.string.input_error), Toast.LENGTH_LONG).show();//返回失败消息
+        } else {
+            dbOperator.update(getId, getMoney, getCategory, getDate, getTime, getNote,
+                    idTV.getText().toString().trim(),
+                    moneyET.getText().toString().trim(),
+                    categoryET.getText().toString().trim(),
+                    dateTV.getText().toString().trim(),
+                    timeTV.getText().toString().trim(),
+                    noteET.getText().toString().trim());
+            Toast.makeText(this, getResources().getString(R.string.finished), Toast.LENGTH_LONG).show();
+        }
     }
 }
