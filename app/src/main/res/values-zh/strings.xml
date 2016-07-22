@@ -30,13 +30,4 @@
     <string name="close">关闭</string>
     <string name="input_error">检查你的金额/日期/时间</string>
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/3188170363</string>
-    <string name="no_update">未检测到新版本</string>
-    <string name="no">否</string>
-    <string name="update_message">你想要下载新版本吗？</string>
-    <string name="update_title">检测到新版本</string>
-    <string name="yes">是</string>
-    <string name="update">检查更新</string>
-    <string name="permission_message">为了可以更新软件和收集日志，程序需要请求一些权限，是否允许？</string>
-    <string name="permission_title">权限请求</string>
-    <string name="permission_denied">权限已被阻止\n如果程序频繁崩溃\n请到权限管理开启权限</string>
 </resources>

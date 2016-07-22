@@ -90,6 +90,7 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permission, 0);
         }
+        PgyUpdateManager.register(this);
     }
 
     /*--------创建菜单--------*/
@@ -114,9 +115,6 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
                 finish();
                 break;
             }
-            case R.id.update:
-                PgyUpdateManager.register(this);
-                break;
             default:
                 break;
         }

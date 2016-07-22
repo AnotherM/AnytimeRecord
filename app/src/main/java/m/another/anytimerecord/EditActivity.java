@@ -56,8 +56,8 @@ public class EditActivity extends AppCompatActivity {
         mCalendar = Calendar.getInstance();
 
         Intent getIntent = getIntent();
-        int getid = getIntent.getIntExtra(DBOpenHelper.ID, 0);
-        getId = String.valueOf(getid);
+        int getID = getIntent.getIntExtra(DBOpenHelper.ID, 0);
+        getId = String.valueOf(getID);
         getMoney = getIntent.getStringExtra(DBOpenHelper.DATA_MONEY);
         getCategory = getIntent.getStringExtra(DBOpenHelper.DATA_CATEGORY);
         getDate = getIntent.getStringExtra(DBOpenHelper.DATA_DATE);
