@@ -205,7 +205,7 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
 
     public void SAFloatActionButton(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://github.com/AnotherM"));
+        intent.setData(Uri.parse("https://github.com/AnotherM/AnytimeRecord"));
         startActivity(intent);
     }
 }
