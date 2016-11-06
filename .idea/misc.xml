@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="EntryPointsManager">
-    <entry_points version="2.0">
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.EditActivity void EADateBtn(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.ScrollingActivity void SADateBtn(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.ScrollingActivity void SATimeBtn(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.ScrollingActivity void SADoneBtn(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.ScrollingActivity void SAFloatActionButton(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.EditActivity void EATimeBtn(android.view.View view)" />
-      <entry_point TYPE="method" FQNAME="m.another.anytimerecord.EditActivity void EADoneBtn(android.view.View view)" />
-    </entry_points>
-  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,13 +27,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.mikepenz.iconics.view.IconicsImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/money"
-                app:iiv_color="@android:color/white"
-                app:iiv_icon="cmd-wallet"
-                app:iiv_size="@dimen/icon_size" />
+                android:src="@drawable/wallet" />
 
             <EditText
                 android:id="@+id/et_money_EA"
@@ -50,13 +47,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.mikepenz.iconics.view.IconicsImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/category"
-                app:iiv_color="@android:color/white"
-                app:iiv_icon="cmd-file-document"
-                app:iiv_size="@dimen/icon_size" />
+                android:src="@drawable/category" />
 
             <EditText
                 android:id="@+id/et_category_EA"
@@ -71,13 +66,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.mikepenz.iconics.view.IconicsImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/note"
-                app:iiv_color="@android:color/white"
-                app:iiv_icon="cmd-note-text"
-                app:iiv_size="@dimen/icon_size" />
+                android:src="@drawable/notes" />
 
             <EditText
                 android:id="@+id/et_notes_EA"
@@ -100,13 +93,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.mikepenz.iconics.view.IconicsImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/date"
-                app:iiv_color="@android:color/white"
-                app:iiv_icon="cmd-calendar"
-                app:iiv_size="@dimen/icon_size" />
+                android:src="@drawable/date" />
 
             <EditText
                 android:id="@+id/tv_date_EA"
@@ -132,13 +123,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.mikepenz.iconics.view.IconicsImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/time"
-                app:iiv_color="@android:color/white"
-                app:iiv_icon="cmd-clock"
-                app:iiv_size="@dimen/icon_size" />
+                android:src="@drawable/time" />
 
             <EditText
                 android:id="@+id/tv_time_EA"

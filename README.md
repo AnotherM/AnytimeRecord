@@ -4,7 +4,6 @@
 
 使用的项目(Project in use)：
 * [Android-Iconics](https://github.com/mikepenz/Android-Iconics)
-* [Pgyer蒲公英SDK](https://www.pgyer.com/sdk)
 
 
 感谢(Thans to)：
