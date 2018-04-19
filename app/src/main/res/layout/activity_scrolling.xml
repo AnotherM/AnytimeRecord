@@ -17,6 +17,7 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
+            android:fitsSystemWindows="true"
             android:theme="@style/AppTheme.AppBarOverlay">
 
 
@@ -75,6 +76,7 @@
                             android:src="@drawable/notes" />
 
                         <EditText
+                            android:inputType="text"
                             android:id="@+id/et_notes"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -133,6 +135,7 @@
                             android:src="@drawable/time" />
 
                         <EditText
+                            android:inputType="text"
                             android:id="@+id/tv_time"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -172,6 +175,7 @@
                             android:src="@drawable/category" />
 
                         <EditText
+                            android:inputType="text"
                             android:id="@+id/et_category"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"

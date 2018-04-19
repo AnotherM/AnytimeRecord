@@ -25,8 +25,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.pgyersdk.update.PgyUpdateManager;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -49,13 +47,13 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
-        moneyET = (EditText) findViewById(R.id.et_money);
-        categoryET = (EditText) findViewById(R.id.et_category);
-        dateTV = (TextView) findViewById(R.id.tv_date);
-        timeTV = (TextView) findViewById(R.id.tv_time);
-        noteET = (EditText) findViewById(R.id.et_notes);
+        moneyET = findViewById(R.id.et_money);
+        categoryET = findViewById(R.id.et_category);
+        dateTV = findViewById(R.id.tv_date);
+        timeTV = findViewById(R.id.tv_time);
+        noteET = findViewById(R.id.et_notes);
         mCalendar = Calendar.getInstance();
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        RecyclerView mRecyclerView = findViewById(R.id.rv_list);
 
 
         mRecyclerView.setHasFixedSize(true);
@@ -67,13 +65,13 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
         mRecyclerView.setAdapter(dataAdapter);
 
         //下拉刷新 thanks to:http://my.oschina.net/smuswc/blog/612697
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_scrolling);
+        Toolbar toolbar = findViewById(R.id.toolbar_scrolling);
         setSupportActionBar(toolbar);
 
-        AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
+        AppBarLayout appBar = findViewById(R.id.app_bar);
         appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -90,7 +88,6 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permission, 0);
         }
-        PgyUpdateManager.register(this);
     }
 
     /*--------创建菜单--------*/
@@ -148,7 +145,7 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        TextView show = (TextView) findViewById(R.id.tv_date);
+                        TextView show = findViewById(R.id.tv_date);
                         //给小于10的数字添加0
                         if (monthOfYear < 10 && dayOfMonth > 10) {
                             assert show != null;
@@ -173,7 +170,7 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
                     @Override
                     public void onTimeSet(TimePicker view,
                                           int hourOfDay, int minute) {
-                        TextView show = (TextView) findViewById(R.id.tv_time);
+                        TextView show = findViewById(R.id.tv_time);
                         //给小于10的数字添加0
                         if (hourOfDay < 10 && minute > 10) {
                             assert show != null;

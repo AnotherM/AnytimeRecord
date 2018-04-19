@@ -91,9 +91,8 @@ class DBOperator {
 
     public List<DataBean> queryAll() {
         database = mDBOpenHelper.getReadableDatabase();
-        List<DataBean> dataBeanList = null;
+        List<DataBean> dataBeanList = new ArrayList<>();
         if (database.isOpen()) {
-            dataBeanList = new ArrayList<>();
             Cursor cursor = database.query(tableName, null, null, null, null, null, "id desc");
             while (cursor.moveToNext()) {
                 DataBean dataBean = new DataBean();

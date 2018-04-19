@@ -18,12 +18,12 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final List<DataBean> dataBeanList;
 
-    public DataAdapter(Context context) {
+    DataAdapter(Context context) {
         this.context = context;
         dataBeanList = new ArrayList<>();
     }
 
-    public void resetData(List<DataBean> list) {
+    void resetData(List<DataBean> list) {
         dataBeanList.clear();
         dataBeanList.addAll(list);
         notifyDataSetChanged();
@@ -58,12 +58,12 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         final View container;
 
-        public ContentViewHolder(View itemView) {
+        ContentViewHolder(View itemView) {
             super(itemView);
             container = itemView;
 
-            money = (TextView) itemView.findViewById(R.id.item_money);
-            category = (TextView) itemView.findViewById(R.id.item_category);
+            money = itemView.findViewById(R.id.item_money);
+            category = itemView.findViewById(R.id.item_category);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
