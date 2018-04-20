@@ -7,7 +7,7 @@
     <string name="done">完成</string>
     <string name="about">关于</string>
     <string name="thanks">感谢你使用这个程序</string>
-    <string name="input_complete">添加成功</string>
+    <string name="input_complete">添加成功，下拉刷新</string>
     <string name="edit">编辑</string>
     <string name="delete">删除</string>
     <string name="ll_category">类型</string>
@@ -25,7 +25,7 @@
     <string name="show_money">金额：</string>
     <string name="not_date">未添加日期</string>
     <string name="not_time">未添加时间</string>
-    <string name="finished">修改成功</string>
+    <string name="finished">修改成功，下拉刷新</string>
     <string name="exit">退出</string>
     <string name="close">关闭</string>
     <string name="input_error">检查你的金额/日期/时间</string>

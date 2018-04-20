@@ -15,7 +15,6 @@ import java.util.List;
  * Thanks to: http://my.oschina.net/jettWang/blog/613343?fromerr=mjpojPpL
  */
 
-@SuppressWarnings("ALL")
 class DBOperator {
 
     private final SQLiteOpenHelper mDBOpenHelper;
@@ -23,14 +22,13 @@ class DBOperator {
     private final String tableName;
     private SQLiteDatabase database;
 
-    public DBOperator(Context context) {
+    DBOperator(Context context) {
         this.mContext = context;
         mDBOpenHelper = new DBOpenHelper(context);
         this.tableName = DBOpenHelper.TABLE_NAME;
     }
 
-    public long insert(String money, String category, String date, String time, String note) {
-        long i = -1;
+    public void insert(String money, String category, String date, String time, String note) {
         database = mDBOpenHelper.getWritableDatabase();
         if (database.isOpen()) {
             ContentValues contentValues = new ContentValues();
@@ -47,10 +45,9 @@ class DBOperator {
             } else {
                 contentValues.put(DBOpenHelper.DATA_NOTE, note);
             }
-            i = database.insert(tableName, null, contentValues);
+            database.insert(tableName, null, contentValues);
             database.close();
         }
-        return i;
     }
 
     public boolean delete(int id, String money, String category, String date, String time, String note) {
@@ -63,9 +60,8 @@ class DBOperator {
         return false;
     }
 
-    public int update(String oldId, String oldMoney, String oldCategory, String oldDate, String oldTime, String oldNote, String newId, String newMoney, String newCategory, String newDate, String newTime, String newNote) {
+    public void update(String oldId, String oldMoney, String oldCategory, String oldDate, String oldTime, String oldNote, String newId, String newMoney, String newCategory, String newDate, String newTime, String newNote) {
         database = mDBOpenHelper.getWritableDatabase();
-        int i = -1;
         if (database.isOpen()) {
             ContentValues contentValues = new ContentValues();
             contentValues.put(DBOpenHelper.ID, newId);
@@ -82,10 +78,9 @@ class DBOperator {
             } else {
                 contentValues.put(DBOpenHelper.DATA_NOTE, newNote);
             }
-            i = database.update(tableName, contentValues, "id=? AND money=? AND category=? AND date=? AND time=? AND note=?", new String[]{oldId, oldMoney, oldCategory, oldDate, oldTime, oldNote});
+            database.update(tableName, contentValues, "id=? AND money=? AND category=? AND date=? AND time=? AND note=?", new String[]{oldId, oldMoney, oldCategory, oldDate, oldTime, oldNote});
             database.close();
         }
-        return i;
     }
 
 

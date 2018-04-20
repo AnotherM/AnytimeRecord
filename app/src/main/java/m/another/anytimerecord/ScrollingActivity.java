@@ -3,6 +3,7 @@ package m.another.anytimerecord;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class ScrollingActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -194,6 +197,11 @@ public class ScrollingActivity extends AppCompatActivity implements SwipeRefresh
             Toast.makeText(this, R.string.input_error, Toast.LENGTH_LONG).show();//返回失败消息
         } else {
             dbOperator.insert(moneyET.getText().toString().trim(), categoryET.getText().toString().trim(), dateTV.getText().toString().trim(), timeTV.getText().toString().trim(), noteET.getText().toString().trim());
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                imm.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
             Toast.makeText(this, R.string.input_complete, Toast.LENGTH_LONG).show();
             dataBeanList = dbOperator.queryAll();
             dataAdapter.resetData(dataBeanList);

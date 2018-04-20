@@ -7,14 +7,14 @@
     <string name="time">Select time</string>
     <string name="not_time">Time not add</string>
     <string name="note">Notes not add</string>
-    <string name="done">Done</string>
+    <string name="done">Done, pull to refresh</string>
 
     <!--计算器/calculator-->
 
 
     <string name="close">Close </string>
     <string name="input_error">Check your money/date/time</string>
-    <string name="input_complete">Success</string>
+    <string name="input_complete">Success, pull to refresh</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
 
@@ -37,7 +37,7 @@
     <string name="show_category">Category:</string>
     <string name="not_set">Not add</string>
 
-    <string name="finished">Success</string>
+    <string name="finished">Modify Success, pull to refresh</string>
     <string name="exit">Exit</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-4522566152785892/3188170363</string>

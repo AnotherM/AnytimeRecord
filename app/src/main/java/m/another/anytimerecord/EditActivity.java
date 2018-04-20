@@ -2,12 +2,15 @@ package m.another.anytimerecord;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 
 public class EditActivity extends AppCompatActivity {
@@ -43,12 +47,12 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        idTV = (TextView) findViewById(R.id.tv_id_EA);
-        moneyET = (EditText) findViewById(R.id.et_money_EA);
-        categoryET = (EditText) findViewById(R.id.et_category_EA);
-        dateTV = (TextView) findViewById(R.id.tv_date_EA);
-        timeTV = (TextView) findViewById(R.id.tv_time_EA);
-        noteET = (EditText) findViewById(R.id.et_notes_EA);
+        idTV = findViewById(R.id.tv_id_EA);
+        moneyET = findViewById(R.id.et_money_EA);
+        categoryET = findViewById(R.id.et_category_EA);
+        dateTV = findViewById(R.id.tv_date_EA);
+        timeTV = findViewById(R.id.tv_time_EA);
+        noteET = findViewById(R.id.et_notes_EA);
         dbOperator = new DBOperator(this);
         mCalendar = Calendar.getInstance();
 
@@ -69,11 +73,11 @@ public class EditActivity extends AppCompatActivity {
         noteET.setText(getNote);
 
         MobileAds.initialize(this, "ca-app-pub-4522566152785892/3188170363");
-        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdView.loadAd(adRequest);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
+        Toolbar toolbar = findViewById(R.id.toolbar_edit);
         setSupportActionBar(toolbar);
     }
 
@@ -114,7 +118,7 @@ public class EditActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        TextView show = (TextView) findViewById(R.id.tv_date_EA);
+                        TextView show = findViewById(R.id.tv_date_EA);
                         //给小于10的数字添加0
                         if (monthOfYear < 10 && dayOfMonth > 10) {
                             assert show != null;
@@ -139,7 +143,7 @@ public class EditActivity extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker view,
                                           int hourOfDay, int minute) {
-                        TextView show = (TextView) findViewById(R.id.tv_time_EA);
+                        TextView show = findViewById(R.id.tv_time_EA);
                         //给小于10的数字添加0
                         if (hourOfDay < 10 && minute > 10) {
                             assert show != null;
@@ -169,6 +173,11 @@ public class EditActivity extends AppCompatActivity {
                     dateTV.getText().toString().trim(),
                     timeTV.getText().toString().trim(),
                     noteET.getText().toString().trim());
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                imm.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
             Toast.makeText(this, getResources().getString(R.string.finished), Toast.LENGTH_LONG).show();
         }
     }

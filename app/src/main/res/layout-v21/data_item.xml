@@ -10,6 +10,7 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:stateListAnimator="@drawable/raise"
+    android:focusable="true"
     app:cardCornerRadius="@dimen/layout_margin_4dp">
 
     <LinearLayout

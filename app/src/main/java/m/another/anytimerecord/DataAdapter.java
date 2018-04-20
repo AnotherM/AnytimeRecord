@@ -52,7 +52,7 @@ class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return dataBeanList.size();
     }
 
-    public class ContentViewHolder extends RecyclerView.ViewHolder {
+    private class ContentViewHolder extends RecyclerView.ViewHolder {
         final TextView money;
         final TextView category;
 

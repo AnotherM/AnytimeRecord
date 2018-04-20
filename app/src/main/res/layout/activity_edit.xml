@@ -58,7 +58,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
-                android:hint="@string/category" />
+                android:hint="@string/category"
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
@@ -77,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/note"
+                android:inputType="text"
                 android:lines="1" />
 
         </LinearLayout>
@@ -137,6 +139,7 @@
                 android:layout_weight="7"
                 android:focusable="false"
                 android:hint="@string/not_time"
+                android:inputType="text"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button

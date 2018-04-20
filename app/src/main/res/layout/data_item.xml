@@ -9,6 +9,7 @@
     android:layout_marginTop="@dimen/layout_margin_4dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
+    android:focusable="true"
     app:cardCornerRadius="@dimen/layout_margin_4dp">
 
     <LinearLayout
